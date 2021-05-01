@@ -1,5 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
+import { Component } from 'react';
+import FirstComponent from './Components/SampleLearningComponents/FirstComponent'
+import SecondComponent from './Components/SampleLearningComponents/SecondComponent'
 
 function App() {
   return (
@@ -19,8 +22,12 @@ function App() {
         </a>
       </header> */}
       My Hello World
+      <FirstComponent/>
+      <SecondComponent/>
     </div>
   );
 }
+
+
 
 export default App;
