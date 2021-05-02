@@ -3,6 +3,7 @@ import './App.css';
 import { Component } from 'react';
 import FirstComponent from './Components/SampleLearningComponents/FirstComponent'
 import SecondComponent from './Components/SampleLearningComponents/SecondComponent'
+import Counter from './Components/Counters/Counter'
 
 function App() {
   return (
@@ -21,11 +22,22 @@ function App() {
           Learn React
         </a>
       </header> */}
-      My Hello World
+      <Counter/>
+    </div>
+  );
+}
+class ThirdComponent extends Component{
+  render(){
+    return(
+      <div className="thirdComponent">
+    My Hello World
       <FirstComponent/>
       <SecondComponent/>
     </div>
-  );
+    );
+    }
+
+
 }
 
 
