@@ -4,6 +4,7 @@ import { Component } from 'react';
 import FirstComponent from './Components/SampleLearningComponents/FirstComponent'
 import SecondComponent from './Components/SampleLearningComponents/SecondComponent'
 import Counter from './Components/Counters/Counter'
+import TodoApp from './Components/todo/TodoApp'
 
 function App() {
   return (
@@ -22,7 +23,9 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <Counter/>
+      {/* <Counter/> */}
+<TodoApp/>
+
     </div>
   );
 }
