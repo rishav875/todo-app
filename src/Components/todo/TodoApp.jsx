@@ -1,14 +1,18 @@
+import { render } from '@testing-library/react';
 import { Component } from 'react';
-import {BrowserRouter as Router , Route} from 'react-router-dom'
+import {BrowserRouter as Router , Route, Switch} from 'react-router-dom'
 
 class TodoApp extends Component {
     render(){
         return(
             <div className="TodoApp">
                 <Router>
-                <Route path="/" exact component={LoginComponent}/>
-                    <Route path="/login" component={LoginComponent}/>
-                    <Route path="/welcome" component={WelcomeComponent}/>
+                    <Switch>
+                        <Route path="/" exact component={LoginComponent}/>
+                        <Route path="/login" component={LoginComponent}/>
+                        <Route path="/welcome/:name" component={WelcomeComponent}/>
+                        <Route component={ErrorComponent}/>
+                    </Switch>
                 </Router>
                 {/* My Todo Application
                 <br></br>
@@ -35,7 +39,7 @@ class LoginComponent extends Component{//Controlled Component
     loginClicked(){
         
         if(this.state.username==='Rishav' && this.state.password==='rishav875'){
-        this.props.history.push("/welcome")
+        this.props.history.push(`/welcome/${this.state.username}`)
             console.log('Successful')
         this.setState({loginpass:true})
         this.setState({loginfail:false})
@@ -88,7 +92,12 @@ class LoginComponent extends Component{//Controlled Component
 
 class WelcomeComponent extends Component{
     render(){
-        return <div>Welcome To the MyTodos</div>
+        return <div>Welcome {this.props.match.params.name}</div>
     }
+}
+function ErrorComponent(){
+    
+        return <div>An Error has occured...Contact Support</div>
+    
 }
 export default TodoApp
