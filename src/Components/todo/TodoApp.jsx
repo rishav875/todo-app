@@ -7,13 +7,16 @@ class TodoApp extends Component {
         return(
             <div className="TodoApp">
                 <Router>
+                <HeaderComponent/>
                     <Switch>
                         <Route path="/" exact component={LoginComponent}/>
                         <Route path="/login" component={LoginComponent}/>
                         <Route path="/welcome/:name" component={WelcomeComponent}/>
                         <Route path="/todos" component={ListTodosComponent}/>
+                        <Route path="/logout" component={LogoutComponent}/>
                         <Route component={ErrorComponent}/>
                     </Switch>
+                <FooterComponent/>
                 </Router>
                 {/* My Todo Application
                 <br></br>
@@ -23,6 +26,38 @@ class TodoApp extends Component {
         )
     }
 }
+class HeaderComponent extends Component{
+    render(){
+        return(
+            <header>
+                <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+                    <div>
+                        <a href="https:www.in28minutes.com" className="navbar-brand">Todo Application</a>
+                    </div>
+                    <ul className="navbar-nav">
+                    <li ><Link className="nav-link" to="/welcome/Rishav">Home</Link></li>
+                    <li ><Link className="nav-link" to="/todos">Todos</Link></li>
+                    </ul>
+                    <ul className="navbar-nav navbar-collapse justify-content-end">
+                        <li ><Link className="nav-link" to="/login">Login</Link></li>
+                        <li ><Link className="nav-link" to="/logout">Logout</Link></li>
+                    </ul>
+                </nav>
+            </header>
+        )
+    }
+}
+
+class FooterComponent extends Component{
+    render(){
+        return(
+            <footer className="footer">
+                <span className="text-muted">All Rights are not Reserved</span>
+            </footer>
+        )
+    }
+}
+
 class LoginComponent extends Component{//Controlled Component
     constructor(props){
         super(props)
@@ -63,14 +98,17 @@ class LoginComponent extends Component{//Controlled Component
     render(){
         return(
             <>
+            <h1>Login</h1>
+            <div className="container">
             {/* <LoginFailed loginfail={this.state.loginfail}/>
             <LoginPass loginpass={this.state.loginpass}/> */}
-            {this.state.loginfail && <div>Invalid Credentials</div>}
+            {this.state.loginfail && <div className="alert alert-warning">Invalid Credentials</div>}
             {this.state.loginpass && <div>Login Successful</div>}
+            <br></br>
             User Name:<input type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
             Password:<input type= "password" name="password"value={this.state.password} onChange={this.handleChange} />
-            <br></br>
-            <button onClick={this.loginClicked}>Login</button> 
+            <button className="btn btn-success" onClick={this.loginClicked}>Login</button> 
+            </div>
             </>
         )
     }
@@ -94,10 +132,13 @@ class LoginComponent extends Component{//Controlled Component
 class WelcomeComponent extends Component{
     render(){
         return (
-        <div>Welcome {this.props.match.params.name}.
+            <>
+            <h1>Welcome!</h1>
+        <div className="container">Welcome {this.props.match.params.name}.
         You can manage your todos <Link to="/todos">here</Link>
         
         </div>
+        </>
         )
         }
 }
@@ -122,9 +163,10 @@ class ListTodosComponent extends Component{
     }
     render(){
         return( 
-        <div>
+        <div className="container">
             <h1>List Todos</h1>
-            <table>
+            <div>
+            <table className="table">
                 <thead>
                 <tr>
                     <th>id</th>
@@ -151,8 +193,21 @@ class ListTodosComponent extends Component{
                     }
                 </tbody>
             </table>
-            
+            </div>
         </div>
+        )
+    }
+}
+
+class LogoutComponent extends Component{
+    render(){
+        return(
+            <>
+                 <h1>You are logged out</h1>
+                 <div className="container">
+                     Thanks for  using our application....
+                 </div>
+            </>
         )
     }
 }
