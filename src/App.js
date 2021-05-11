@@ -1,10 +1,10 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 import './bootstrap.css';
-import { Component } from 'react';
-import FirstComponent from './Components/SampleLearningComponents/FirstComponent'
-import SecondComponent from './Components/SampleLearningComponents/SecondComponent'
-import Counter from './Components/Counters/Counter'
+//import { Component } from 'react';
+//import FirstComponent from './Components/SampleLearningComponents/FirstComponent'
+//import SecondComponent from './Components/SampleLearningComponents/SecondComponent'
+//import Counter from './Components/Counters/Counter'
 import TodoApp from './Components/todo/TodoApp'
 
 function App() {
@@ -30,19 +30,19 @@ function App() {
     </div>
   );
 }
-class ThirdComponent extends Component{
-  render(){
-    return(
-      <div className="thirdComponent">
-    My Hello World
-      <FirstComponent/>
-      <SecondComponent/>
-    </div>
-    );
-    }
+// class ThirdComponent extends Component{
+//   render(){
+//     return(
+//       <div className="thirdComponent">
+//     My Hello World
+//       <FirstComponent/>
+//       <SecondComponent/>
+//     </div>
+//     );
+//     }
 
 
-}
+// }
 
 
 

@@ -1,4 +1,3 @@
-import { Component } from 'react';
 
  //Creating Component using a function
   function SecondComponent(){
