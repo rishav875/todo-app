@@ -4,6 +4,7 @@ import AuthenticationService from './AuthenticationService.js'
 
 
 class LoginComponent extends Component{//Controlled Component
+   
     constructor(props){
         super(props)
         this.state={
@@ -16,22 +17,43 @@ class LoginComponent extends Component{//Controlled Component
         this.loginClicked=this.loginClicked.bind(this)
         //this.handleUsernameChange=this.handleUsernameChange.bind(this)
     }
+    
 
     loginClicked(){
         
-        if(this.state.username==='Rishav' && this.state.password==='rishav875'){
-            AuthenticationService.registerSuccessfulLogin(this.state.username,this.state.password)
-            this.props.history.push(`/welcome/${this.state.username}`)
-            console.log('Successful')
-        this.setState({loginpass:true})
-        this.setState({loginfail:false})
+        // if(this.state.username==='Rishav' && this.state.password==='rishav875'){
+        //     AuthenticationService.registerSuccessfulLogin(this.state.username,this.state.password)
+        //     this.props.history.push(`/welcome/${this.state.username}`)
+        //     console.log('Successful')
+        // this.setState({loginpass:true})
+        // this.setState({loginfail:false})
+        // else{
+        //     console.log('Failed')
+        //     this.setState({loginpass:false})
+        //     this.setState({loginfail:true})
+        // }
+        AuthenticationService.executeBasicAuthentication(this.state.username,this.state.password)
+            .then(
+                ()=>{
+                    AuthenticationService.registerSuccessfulLogin(this.state.username,this.state.password)
+                    this.props.history.push(`/welcome/${this.state.username}`)
+                    console.log('Successful')
+                    this.setState({loginpass:true})
+                    this.setState({loginfail:false}) 
+                }
+            )
+            .catch(
+                ()=>{
+                     
+                    console.log('Failed')
+                    this.setState({loginpass:false})
+                    this.setState({loginfail:true})
+                            }
+
+            )
     }
-    else{
-        console.log('Failed')
-        this.setState({loginpass:false})
-        this.setState({loginfail:true})
-    }
-    }
+    
+    
     
     handleChange(event){
         console.log(this.state);

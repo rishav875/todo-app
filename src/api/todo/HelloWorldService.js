@@ -13,7 +13,17 @@ class HelloWorldService{
     
     executeHelloWorldPathVariableService(name){
         //console.log('executed Service')
-        return axios.get(`http://localhost:8080/hello-world/path-variable/${name}`)
+        //CSRF Cross side Request Forgery
+        // let username='Rishav'
+        // let password= 'rishav@875'
+        // let basicAuthHeader = 'Basic '+ window.btoa(username+":"+password)
+         return axios.get(`http://localhost:8080/hello-world/path-variable/${name}`
+        // {
+        //     headers:{
+        //         authorization: basicAuthHeader
+        //     }
+        // }
+        )
     }
 }
 
